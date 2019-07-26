@@ -170,6 +170,10 @@ Execute the above compiled sample program:
 node dist/example.js data/activity_twin_cities_marathon.tcx data/activity_twin_cities_marathon.json
 ```
 
+### Contributions
+
+- July 2019, Alex VanLaningham - suggestion to reimplement in TypeScript, and Watt/Cadence TCX file.
+
 ### Release History
 
 * 2019-07-26, version 1.0.0, Library rewritten in TypeScript.
