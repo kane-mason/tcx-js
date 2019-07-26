@@ -163,8 +163,8 @@ fs.writeFileSync(outfile, jstr);
 
 ### Release History
 
-* 2019-07-26  v1.0.0  Library rewritten in TypeScript.
-* 2014-11-09  v0.1.2  Added optional calculated Trackpoint fields 'elapsed_sec' and 'elapsed_hhmmss'.
-* 2014-11-09  v0.1.1  Added optional calculated Trackpoint fields 'alt_feet' and 'dist_miles'.
-* 2014-11-09  v0.1.0  Initial working version.
-* 2014-11-09  v0.0.1  alpha 1
+* 2019-07-26 - v1.0.0 - Library rewritten in TypeScript.
+* 2014-11-09 - v0.1.2 - Added optional calculated Trackpoint fields 'elapsed_sec' and 'elapsed_hhmmss'.
+* 2014-11-09 - v0.1.1 - Added optional calculated Trackpoint fields 'alt_feet' and 'dist_miles'.
+* 2014-11-09 - v0.1.0 - Initial working version, implemented in CoffeeScript.
+* 2014-11-09 - v0.0.1 - Alpha 1
