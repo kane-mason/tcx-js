@@ -20,7 +20,7 @@ Require tcx-js in your code:
 tcx = require("tcx-js")
 ```
 
-#### Parse a TCX file from Garmin Connect
+#### Parse a TCX file from Garmin Connect - JavaScript example
 
 Parsing elapsed time is typically sub-second, even for a marathon run.
 The tcx-js Parser uses the 'node-expat' library, and the SAX API, for speed and performance.
@@ -28,12 +28,12 @@ The tcx-js Parser uses the 'node-expat' library, and the SAX API, for speed and 
 Note: this library is implemented with CoffeeScript, and these examples are also in CoffeeScript.
 
 ```
-parser = new tcx.Parser()
-parser.parse_file("data/activity_twin_cities_marathon.tcx")
-activity = parser.activity
-creator  = activity.creator
-author   = activity.author
-trackpoints = activity.trackpoints
+var infile = "data/activity_twin_cities_marathon.tcx"
+var parser = new tcx.Parser(infile);
+var activity = parser.activity;
+var creator = activity.creator;
+var author = activity.author;
+var trackpoints = activity.trackpoints;
 ```
 
 "creator" is the device that recorded the data
@@ -41,13 +41,14 @@ trackpoints = activity.trackpoints
 ```
 console.log(JSON.stringify(creator, null, 2)) ->
 {
+  "type": "Creator",
   "name": "Garmin Forerunner 620",
-  "unit_id": "3875991210",
   "product_id": "1623",
-  "version_major": "3",
-  "version_minor": "0",
+  "unit_id": "3875991210",
   "build_major": "0",
-  "build_minor": "0"
+  "build_minor": "0",
+  "version_major": "3",
+  "version_minor": "0"
 }
 ```
 
@@ -56,13 +57,14 @@ console.log(JSON.stringify(creator, null, 2)) ->
 ```
 console.log(JSON.stringify(author, null, 2)) ->
 {
+  "type": "Author",
   "name": "Garmin Connect API",
-  "version_major": "14",
-  "version_minor": "10",
+  "part_number": "006-D2449-00",
+  "lang": "en",
   "build_major": "0",
   "build_minor": "0",
-  "lang": "en",
-  "part_number": "006-D2449-00"
+  "version_major": "14",
+  "version_minor": "10"
 }
 ```
 
@@ -73,68 +75,90 @@ console.log(trackpoints.length) -> 2256
 
 console.log(JSON.stringify(trackpoints[0], null, 2)) ->
 {
+  "doctype": "trackpoint",
   "time": "2014-10-05T13:07:53.000Z",
-  "lat": "44.97431952506304",
-  "lng": "-93.26310088858008",
-  "alt_meters": "257.0",
-  "dist_meters": "0.0",
-  "hr_bpm": "85",
-  "run_cadence": "89",
-  "seq": 1
+  "seq": 1,
+  "latitude": 44.97431952506304,
+  "longitude": -93.26310088858008,
+  "altitude_meters": 257,
+  "altitude_feet": 843.1758530183727,
+  "distance_meters": 0,
+  "distance_miles": 0,
+  "distance_km": 0,
+  "distance_yds": 0,
+  "heart_rate_bpm": 85,
+  "speed": 0,
+  "cadence": 89,
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -93.26310088858008,
+      44.97431952506304
+    ]
+  },
+  "elapsed_sec": 0,
+  "elapsed_hhmmss": "00:00:00",
+  "epoch_ms": 1412514473000
 }
 
 console.log(JSON.stringify(trackpoints[trackpoints.length - 1], null, 2)) ->
 {
+  "doctype": "trackpoint",
   "time": "2014-10-05T17:22:17.000Z",
-  "lat": "44.95180849917233",
-  "lng": "-93.10493202880025",
-  "alt_meters": "260.0",
-  "dist_meters": "42635.44921875",
-  "hr_bpm": "161",
-  "run_cadence": "77",
-  "seq": 2256
-}
-```
-
-#### Parse, with Augmented Calculated fields
-
-tcx-js will optionally calculate and add the 'alt_feet', 'dist_miles',
-'elapsed_sec', and 'elapsed_hhmmss' fields to each trackpoint if you configure
-the parser as follows:
-
-```
-opts = {}
-opts.alt_feet   = true
-opts.dist_miles = true
-opts.elapsed    = true  # this will add two fields - elapsed_sec and elapsed_hhmmss
-
-p2 = new tcx.Parser(opts)
-p2.parse_file("data/activity_twin_cities_marathon.tcx")
-a2 = p2.activity
-t2 = a2.trackpoints
-console.log(JSON.stringify(t2[t2.length - 1], null, 2)) ->
-{
-  "time": "2014-10-05T17:22:17.000Z",
-  "lat": "44.95180849917233",
-  "lng": "-93.10493202880025",
-  "alt_meters": "260.0",
-  "dist_meters": "42635.44921875",
-  "hr_bpm": "161",
-  "run_cadence": "77",
   "seq": 2256,
-  "alt_feet": 853.018372703412,
-  "dist_miles": 26.492439912628996,
+  "latitude": 44.95180849917233,
+  "longitude": -93.10493202880025,
+  "altitude_meters": 260,
+  "altitude_feet": 853.018372703412,
+  "distance_meters": 42635.44921875,
+  "distance_miles": 26.492439912628996,
+  "distance_km": 42.63544921875,
+  "distance_yds": 46626.69424622703,
+  "heart_rate_bpm": 161,
+  "speed": 3.5460000038146977,
+  "cadence": 77,
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -93.10493202880025,
+      44.95180849917233
+    ]
+  },
   "elapsed_sec": 15264,
-  "elapsed_hhmmss": "04:14:24"
+  "elapsed_hhmmss": "04:14:24",
+  "epoch_ms": 1412529737000
 }
 ```
 
-The version number of this library, and other constant values, can be determined at runtime.
+#### Parse a TCX file from Garmin Connect - TypeScript example
 
 ```
-Parser.VERSION         -> 0.1.2
-Parser.FEET_PER_METER  -> 3.280839895013123
-Parser.METERS_PER_MILE -> 1609.344
+import * as fs from "fs";
+
+import { Parser }     from "tcx";
+import { Activity }   from "tcx";
+import { Author }     from "tcx";
+import { Creator }    from "tcx";
+import { Trackpoint } from "tcx";
+
+...
+
+var infile  = process.argv[2];
+var outfile = process.argv[3];
+
+var parser :   Parser   = new Parser(infile);
+var activity : Activity = parser.activity;
+var creator :  Creator  = activity.creator;
+var author :   Author   = activity.author;
+var trackpoints : Trackpoint[] = activity.trackpoints;
+
+var jstr : string = JSON.stringify(parser.activity, (key, value) => {
+    if (value !== null) {
+        return value;
+    }
+}, 2);
+fs.writeFileSync(outfile, jstr);
+
 ```
 
 ### Release History
