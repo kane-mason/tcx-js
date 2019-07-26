@@ -4,7 +4,12 @@
 
 A Node.js library for parsing TCX/XML files, such as from a Garmin GPS device.
 
-Optionally provides additional calculated Trackpoint fields.
+### Implementation
+
+This library was rewritten in **TypeScript** in July 2019, replacing the previous CoffeeScript implementation.
+
+Several attributes were added to the parsed Trackpoints, such as location in GeoJSON format, and 
+a doctype attribute.  These attributes can be useful in Azure CosmosDB.
 
 ### Examples
 
@@ -23,9 +28,8 @@ tcx = require("tcx-js")
 #### Parse a TCX file from Garmin Connect - JavaScript example
 
 Parsing elapsed time is typically sub-second, even for a marathon run.
-The tcx-js Parser uses the 'node-expat' library, and the SAX API, for speed and performance.
 
-Note: this library is implemented with CoffeeScript, and these examples are also in CoffeeScript.
+The constructor method is now passed the input tcx filename
 
 ```
 var infile = "data/activity_twin_cities_marathon.tcx"
@@ -36,7 +40,7 @@ var author = activity.author;
 var trackpoints = activity.trackpoints;
 ```
 
-"creator" is the device that recorded the data
+**creator** is the device that recorded the data
 
 ```
 console.log(JSON.stringify(creator, null, 2)) ->
@@ -52,7 +56,7 @@ console.log(JSON.stringify(creator, null, 2)) ->
 }
 ```
 
-"author" is what created the tcx/xml file
+**author** is what software created the tcx/xml file
 
 ```
 console.log(JSON.stringify(author, null, 2)) ->
@@ -68,7 +72,7 @@ console.log(JSON.stringify(author, null, 2)) ->
 }
 ```
 
-"trackpoints" is an Array of the recorded data points
+**trackpoints** is an Array of the recorded data points
 
 ```
 console.log(trackpoints.length) -> 2256
@@ -158,7 +162,6 @@ var jstr : string = JSON.stringify(parser.activity, (key, value) => {
     }
 }, 2);
 fs.writeFileSync(outfile, jstr);
-
 ```
 
 ### Release History
