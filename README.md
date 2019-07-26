@@ -136,24 +136,24 @@ console.log(JSON.stringify(trackpoints[trackpoints.length - 1], null, 2)) ->
 
 #### Parse a TCX file from Garmin Connect - TypeScript example
 
+Example program:
+
 ```
 import * as fs from "fs";
 
-import { Parser }     from "tcx";
-import { Activity }   from "tcx";
-import { Author }     from "tcx";
-import { Creator }    from "tcx";
-import { Trackpoint } from "tcx";
-
-...
+import { Parser }     from "tcx-js";
+import { Activity }   from "tcx-js";
+import { Author }     from "tcx-js";
+import { Creator }    from "tcx-js";
+import { Trackpoint } from "tcx-js";
 
 var infile  = process.argv[2];
 var outfile = process.argv[3];
 
-var parser :   Parser   = new Parser(infile);
-var activity : Activity = parser.activity;
-var creator :  Creator  = activity.creator;
-var author :   Author   = activity.author;
+var parser:   Parser   = new Parser(infile);
+var activity: Activity = parser.activity;
+var creator:  Creator  = activity.creator;
+var author:   Author   = activity.author;
 var trackpoints : Trackpoint[] = activity.trackpoints;
 
 var jstr : string = JSON.stringify(parser.activity, (key, value) => {
@@ -162,6 +162,12 @@ var jstr : string = JSON.stringify(parser.activity, (key, value) => {
     }
 }, 2);
 fs.writeFileSync(outfile, jstr);
+```
+
+Execute the above compiled sample program:
+
+```
+node dist/example.js data/activity_twin_cities_marathon.tcx data/activity_twin_cities_marathon.json
 ```
 
 ### Release History
