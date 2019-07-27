@@ -4,6 +4,8 @@
 
 A Node.js library for parsing TCX/XML files, such as from a Garmin GPS device.
 
+[tcx-js @ npmjs.com](https://www.npmjs.com/package/tcx-js)
+
 ### Implementation
 
 This library was rewritten in **TypeScript** in July 2019, replacing the previous CoffeeScript implementation.
