@@ -36,7 +36,13 @@ The constructor method is now passed the input tcx filename
 ```
 var infile = "data/activity_twin_cities_marathon.tcx"
 var parser = new tcx.Parser(infile);
+```
+
+Get the parsed data:
+```
 var activity = parser.activity;
+var sport = activity.sport;
+var activityId = activity.activityId;
 var creator = activity.creator;
 var author = activity.author;
 var trackpoints = activity.trackpoints;
@@ -178,6 +184,7 @@ node dist/example.js data/activity_twin_cities_marathon.tcx data/activity_twin_c
 
 ### Release History
 
+* 2019-07-27, version 1.0.1, Added Activity.sport and Activity.activityId
 * 2019-07-26, version 1.0.0, Library rewritten in TypeScript.
 * 2014-11-09, version 0.1.2, Added optional calculated Trackpoint fields 'elapsed_sec' and 'elapsed_hhmmss'.
 * 2014-11-09, version 0.1.1, Added optional calculated Trackpoint fields 'alt_feet' and 'dist_miles'.

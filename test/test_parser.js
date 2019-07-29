@@ -1,5 +1,5 @@
 // Unit tests for class Parser
-// Chris Joakim, 2019/07/26
+// Chris Joakim, 2019/07/29
 
 const assert = require('assert');
 const chai   = require('chai');
@@ -17,7 +17,7 @@ describe('Parser', function() {
   describe('#constructor()', function() {
 
     it('defines a VERSION', function() {
-      chai.assert.isTrue(Parser.VERSION === '1.0.0', 'Parser.VERSION should be 1.0.0');
+      chai.assert.isTrue(Parser.VERSION === '1.0.1', 'Parser.VERSION should be 1.0.1');
     });
 
     it('It should return the correct value for file activity_twin_cities_marathon.tcx', function() {
@@ -28,6 +28,9 @@ describe('Parser', function() {
       author = activity.author;
       creator = activity.creator;
       trackpoints = activity.trackpoints;
+
+      expect(activity.sport).to.equal('Running');
+      expect(activity.activityId).to.equal('2014-10-05T13:07:53.000Z');
 
       expect(creator.name).to.equal('Garmin Forerunner 620');
       expect(creator.unit_id).to.equal('3875991210');
@@ -156,6 +159,9 @@ describe('Parser', function() {
       author = activity.author;
       creator = activity.creator;
       trackpoints = activity.trackpoints;
+
+      expect(activity.sport).to.equal('Biking');
+      expect(activity.activityId).to.equal('2018-07-29T07:34:11Z');
 
       expect(author.name).to.equal('FitnessSyncer.com');
       expect(author.version_major).to.equal('1');

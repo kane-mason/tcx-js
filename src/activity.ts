@@ -11,15 +11,18 @@ import { Timestamp }   from "./ts";
 
 export class Activity {
 
-    public tcx_filename : string = '';
+    public tcx_filename : string = "";
+    public activityId: string = "";
+    public sport: string = "";
     public author: Author;
     public creator: Creator;
     public trackpoints: Trackpoint[] = new Array<Trackpoint>();
     public firstTrackpoint : Trackpoint | null = new Trackpoint({}, 0);
     public startingEpoch : number = 0;
     public parsedDate : string = new Date().toISOString();
-    
+
     public constructor() {
+        this.sport   = "";
         this.author  = new Author(null);
         this.creator = new Creator(null);
     }

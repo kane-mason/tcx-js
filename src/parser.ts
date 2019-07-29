@@ -31,7 +31,7 @@ export const json: JsonObject = {}
 
 export class Parser {
 
-    public static get VERSION(): string  { return "1.0.0"; }
+    public static get VERSION(): string  { return "1.0.1"; }
 
     public activity : Activity = new Activity();
     public tcx_filename: string = '';
@@ -44,9 +44,21 @@ export class Parser {
         let tcdb : JsonObject = <JsonObject> root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";
 
+        // console.log(JSON.stringify(root_obj));
+        // var epoch = new Date().getTime();
+        // fs.writeFileSync('tmp/' + epoch + '.json', JSON.stringify(root_obj, null, 2))
+
         let activities : JsonObject = <JsonObject> tcdb["Activities"];
         let activity : JsonObject   = <JsonObject> activities["Activity"];
-        let activity_id = <string> activity["Id"];
+        this.activity.activityId = <string> activity["Id"];
+
+        try {
+            let activityDollar : JsonObject = <JsonObject> activity["$"];
+            this.activity.sport = <string> activityDollar["Sport"];
+        }
+        catch(e) {
+            console.log(e);
+        }
 
         try {
             let author_data : JsonObject = <JsonObject> tcdb["Author"];

@@ -2,7 +2,7 @@
 import * as fs from "fs";
 import * as xml2js from "xml2js";
 
-// tcx-js npm library, by Chris Joakim, 2019/07/26
+// tcx-js npm library, by Chris Joakim, 2019/07/29
 
 
 // Instances of this class represent a Timestamp from a string value
@@ -313,15 +313,18 @@ export class Creator {
 
 export class Activity {
 
-    public tcx_filename : string = '';
+    public tcx_filename : string = "";
+    public activityId: string = "";
+    public sport: string = "";
     public author: Author;
     public creator: Creator;
     public trackpoints: Trackpoint[] = new Array<Trackpoint>();
     public firstTrackpoint : Trackpoint | null = new Trackpoint({}, 0);
     public startingEpoch : number = 0;
     public parsedDate : string = new Date().toISOString();
-    
+
     public constructor() {
+        this.sport   = "";
         this.author  = new Author(null);
         this.creator = new Creator(null);
     }
@@ -355,7 +358,7 @@ export const json: JsonObject = {}
 
 export class Parser {
 
-    public static get VERSION(): string  { return "1.0.0"; }
+    public static get VERSION(): string  { return "1.0.1"; }
 
     public activity : Activity = new Activity();
     public tcx_filename: string = '';
@@ -368,9 +371,21 @@ export class Parser {
         let tcdb : JsonObject = <JsonObject> root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";
 
+        // console.log(JSON.stringify(root_obj));
+        // var epoch = new Date().getTime();
+        // fs.writeFileSync('tmp/' + epoch + '.json', JSON.stringify(root_obj, null, 2))
+
         let activities : JsonObject = <JsonObject> tcdb["Activities"];
         let activity : JsonObject   = <JsonObject> activities["Activity"];
-        let activity_id = <string> activity["Id"];
+        this.activity.activityId = <string> activity["Id"];
+
+        try {
+            let activityDollar : JsonObject = <JsonObject> activity["$"];
+            this.activity.sport = <string> activityDollar["Sport"];
+        }
+        catch(e) {
+            console.log(e);
+        }
 
         try {
             let author_data : JsonObject = <JsonObject> tcdb["Author"];
