@@ -14,10 +14,4 @@ node dist/merge.js src/tcx.ts
 echo 'compiling after merge...'
 tsc
 
-echo 'src dir:'
-ls -al src/
-
-echo 'dist dir:'
-ls -al dist/
-
 echo 'done'
