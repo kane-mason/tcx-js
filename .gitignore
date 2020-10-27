@@ -1,6 +1,5 @@
 # cj
 
-dist/
 tmp/
 
 # Logs
@@ -35,3 +34,4 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+.DS_Store
