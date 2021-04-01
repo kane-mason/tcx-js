@@ -112,7 +112,7 @@ export class Trackpoint {
     public doctype:         string = 'trackpoint';
     public time:            string | null = null;
     public seq:             number | null = null;
-    public latitude:        number | null = 0; 
+    public latitude:        number | null = 0;
     public longitude:       number | null = 0;
     public altitude_meters: number | null = null;
     public altitude_feet:   number | null = null;
@@ -123,7 +123,7 @@ export class Trackpoint {
     public heart_rate_bpm:  number | null = null;
     public speed:           number | null = null;
     public cadence:         number | null = null;  // either running or cycling
-    public watts:           number | null = null; 
+    public watts:           number | null = null;
     public location:        GeoJsonLocation | null = null;
     public elapsed_sec:     number | null = null;
     public elapsed_hhmmss:  string | null = null;
@@ -267,7 +267,7 @@ export class Author {
             this.name = <string> raw_obj["Name"];
             this.lang = <string> raw_obj["LangID"];
             this.part_number = <string> raw_obj["PartNumber"];
-    
+
             let build : JsonObject = <JsonObject> raw_obj["Build"];
             let vers  : JsonObject = <JsonObject> build["Version"];
             this.version_major = <string> vers["VersionMajor"];
@@ -296,7 +296,7 @@ export class Creator {
             this.name    = <string> raw_obj["Name"];
             this.unit_id = <string> raw_obj["UnitId"];
             this.product_id = <string> raw_obj["ProductID"];
-    
+
             let vers : JsonObject = <JsonObject> raw_obj["Version"];
             this.version_major = <string> vers["VersionMajor"];
             this.version_minor = <string> vers["VersionMinor"];
@@ -363,10 +363,10 @@ export class Parser {
     public activity : Activity = new Activity();
     public tcx_filename: string = '';
 
-    public constructor(infile: string) {
+    public constructor(infile: string, intcxstring?: string) {
         this.tcx_filename = infile;
         this.activity.tcx_filename = infile;
-        let tcx_xml_str = fs.readFileSync(infile).toString();
+        let tcx_xml_str = intcxstring ? intcxstring : fs.readFileSync(infile).toString();
         let root_obj : JsonObject = <JsonObject> this.convertXmlToJson(tcx_xml_str);
         let tcdb : JsonObject = <JsonObject> root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";
@@ -443,7 +443,7 @@ export class Parser {
             this.activity.trackpoints[i].cleanup();
         }
 
-        this.activity.firstTrackpoint = null;  
+        this.activity.firstTrackpoint = null;
     }
 
     public convertXmlToJson(data: string): Object {
