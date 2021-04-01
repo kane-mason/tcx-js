@@ -1,6 +1,6 @@
-import { JsonValue } from "./tcx";
-import { JsonArray } from "./tcx";
-import { JsonObject } from "./tcx";
+import { JsonValue } from "./parser";
+import { JsonArray } from "./parser";
+import { JsonObject } from "./parser";
 
 //=
 
@@ -21,7 +21,7 @@ export class Author {
             this.name = <string> raw_obj["Name"];
             this.lang = <string> raw_obj["LangID"];
             this.part_number = <string> raw_obj["PartNumber"];
-    
+
             let build : JsonObject = <JsonObject> raw_obj["Build"];
             let vers  : JsonObject = <JsonObject> build["Version"];
             this.version_major = <string> vers["VersionMajor"];

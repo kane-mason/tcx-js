@@ -1,6 +1,6 @@
-import { JsonValue } from "./tcx";
-import { JsonArray } from "./tcx";
-import { JsonObject } from "./tcx";
+import { JsonValue } from "./parser";
+import { JsonArray } from "./parser";
+import { JsonObject } from "./parser";
 
 //=
 
@@ -21,7 +21,7 @@ export class Creator {
             this.name    = <string> raw_obj["Name"];
             this.unit_id = <string> raw_obj["UnitId"];
             this.product_id = <string> raw_obj["ProductID"];
-    
+
             let vers : JsonObject = <JsonObject> raw_obj["Version"];
             this.version_major = <string> vers["VersionMajor"];
             this.version_minor = <string> vers["VersionMinor"];

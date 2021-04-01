@@ -1,6 +1,6 @@
-import { JsonValue } from "./tcx";
-import { JsonArray } from "./tcx";
-import { JsonObject } from "./tcx";
+import { JsonValue } from "./parser";
+import { JsonArray } from "./parser";
+import { JsonObject } from "./parser";
 import { GeoJsonLocation } from "./geo";
 import { ElapsedTime } from "./etime";
 import { Timestamp } from "./ts";
@@ -19,7 +19,7 @@ export class Trackpoint {
     public doctype:         string = 'trackpoint';
     public time:            string | null = null;
     public seq:             number | null = null;
-    public latitude:        number | null = 0; 
+    public latitude:        number | null = 0;
     public longitude:       number | null = 0;
     public altitude_meters: number | null = null;
     public altitude_feet:   number | null = null;
@@ -30,7 +30,7 @@ export class Trackpoint {
     public heart_rate_bpm:  number | null = null;
     public speed:           number | null = null;
     public cadence:         number | null = null;  // either running or cycling
-    public watts:           number | null = null; 
+    public watts:           number | null = null;
     public location:        GeoJsonLocation | null = null;
     public elapsed_sec:     number | null = null;
     public elapsed_hhmmss:  string | null = null;

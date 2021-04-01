@@ -1,10 +1,9 @@
 import * as fs from "fs";
-
-import { Parser }     from "./tcx";
-import { Activity }   from "./tcx";
-import { Author }     from "./tcx";
-import { Creator }    from "./tcx";
-import { Trackpoint } from "./tcx";
+import { Parser }     from "./parser";
+import { Activity }   from "./activity";
+import { Author }     from "./author";
+import { Creator }    from "./creator";
+import { Trackpoint } from "./trackpoint";
 
 export class Main {
 
