@@ -1,4 +1,4 @@
-import { JsonObject } from "./tcx";
+import { JsonObject } from "./parser";
 export declare class Creator {
     type: string;
     name: string;

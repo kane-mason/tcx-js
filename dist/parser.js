@@ -8,12 +8,12 @@ const creator_1 = require("./creator");
 const trackpoint_1 = require("./trackpoint");
 exports.json = {};
 class Parser {
-    constructor(infile) {
+    constructor(infile, intcxstring) {
         this.activity = new activity_1.Activity();
         this.tcx_filename = '';
         this.tcx_filename = infile;
         this.activity.tcx_filename = infile;
-        let tcx_xml_str = fs.readFileSync(infile).toString();
+        let tcx_xml_str = intcxstring ? intcxstring : fs.readFileSync(infile).toString();
         let root_obj = this.convertXmlToJson(tcx_xml_str);
         let tcdb = root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";

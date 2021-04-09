@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-const tcx_1 = require("./tcx");
+const parser_1 = require("./parser");
 class Main {
     constructor() {
     }
@@ -16,7 +16,7 @@ class Main {
             var outfile = process.argv[3];
             console.log('infile:  ' + infile);
             console.log('outfile: ' + outfile);
-            var parser = new tcx_1.Parser(infile);
+            var parser = new parser_1.Parser(infile);
             var activity = parser.activity;
             var creator = activity.creator;
             var author = activity.author;

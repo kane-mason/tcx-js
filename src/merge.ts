@@ -59,7 +59,7 @@ export class Merge {
             if (inZone) {
                 filteredLines.push(line);
             }
-            if (line === "//=") {
+            if (line.replace(/\r?\n|\r/g, "") === "//=") {
                 inZone = true;
             }
         }

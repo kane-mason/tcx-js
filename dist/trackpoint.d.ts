@@ -1,4 +1,4 @@
-import { JsonObject } from "./tcx";
+import { JsonObject } from "./parser";
 import { GeoJsonLocation } from "./geo";
 export declare class Trackpoint {
     static readonly DEFAULT_EPOCH_TIMESTAMP_STRING: string;

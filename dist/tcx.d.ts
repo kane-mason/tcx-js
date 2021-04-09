@@ -104,7 +104,7 @@ export declare class Parser {
     static readonly VERSION: string;
     activity: Activity;
     tcx_filename: string;
-    constructor(infile: string);
+    constructor(infile: string, intcxstring?: string);
     convertXmlToJson(data: string): Object;
     finish(): void;
 }
