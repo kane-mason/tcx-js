@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.619" tests="16" failures="0">
-  <testsuite name="Root Suite" timestamp="2021-04-09T10:22:50" tests="0" failures="0" time="0">
+<testsuites name="Mocha Tests" time="0.943" tests="17" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-04-09T10:35:38" tests="0" failures="0" time="0">
   </testsuite>
-  <testsuite name="ElapsedTime" timestamp="2021-04-09T10:22:50" tests="0" file="M:\dev\tcx-js\test\test_etime.js" failures="0" time="0">
+  <testsuite name="ElapsedTime" timestamp="2021-04-09T10:35:38" tests="0" file="M:\dev\tcx-js\test\test_etime.js" failures="0" time="0">
   </testsuite>
-  <testsuite name="#constructor()" timestamp="2021-04-09T10:22:50" tests="8" file="M:\dev\tcx-js\test\test_etime.js" failures="0" time="0.002">
+  <testsuite name="#constructor()" timestamp="2021-04-09T10:35:38" tests="8" file="M:\dev\tcx-js\test\test_etime.js" failures="0" time="0.002">
     <testcase name="ElapsedTime #constructor() It should define constant values" time="0.001" classname="It should define constant values">
     </testcase>
     <testcase name="ElapsedTime #constructor() It should return the correct value for 0 ms" time="0" classname="It should return the correct value for 0 ms">
     </testcase>
     <testcase name="ElapsedTime #constructor() It should return the correct value for 1000 ms" time="0" classname="It should return the correct value for 1000 ms">
     </testcase>
-    <testcase name="ElapsedTime #constructor() It should return the correct value for -1000 ms" time="0" classname="It should return the correct value for -1000 ms">
+    <testcase name="ElapsedTime #constructor() It should return the correct value for -1000 ms" time="0.001" classname="It should return the correct value for -1000 ms">
     </testcase>
-    <testcase name="ElapsedTime #constructor() It should return the correct value for 62000 ms" time="0.001" classname="It should return the correct value for 62000 ms">
+    <testcase name="ElapsedTime #constructor() It should return the correct value for 62000 ms" time="0" classname="It should return the correct value for 62000 ms">
     </testcase>
     <testcase name="ElapsedTime #constructor() It should return the correct value for 3663000 ms" time="0" classname="It should return the correct value for 3663000 ms">
     </testcase>
@@ -22,28 +22,30 @@
     <testcase name="ElapsedTime #constructor() It should return the correct value for 3663700.1 ms" time="0" classname="It should return the correct value for 3663700.1 ms">
     </testcase>
   </testsuite>
-  <testsuite name="GeoJsonLocation" timestamp="2021-04-09T10:22:50" tests="0" file="M:\dev\tcx-js\test\test_geo.js" failures="0" time="0">
+  <testsuite name="GeoJsonLocation" timestamp="2021-04-09T10:35:38" tests="0" file="M:\dev\tcx-js\test\test_geo.js" failures="0" time="0">
   </testsuite>
-  <testsuite name="#constructor()" timestamp="2021-04-09T10:22:50" tests="1" file="M:\dev\tcx-js\test\test_geo.js" failures="0" time="0">
+  <testsuite name="#constructor()" timestamp="2021-04-09T10:35:38" tests="1" file="M:\dev\tcx-js\test\test_geo.js" failures="0" time="0">
     <testcase name="GeoJsonLocation #constructor() It should return the correct value for Davidson College" time="0" classname="It should return the correct value for Davidson College">
     </testcase>
   </testsuite>
-  <testsuite name="Parser" timestamp="2021-04-09T10:22:50" tests="0" file="M:\dev\tcx-js\test\test_parser.js" failures="0" time="0">
+  <testsuite name="Parser" timestamp="2021-04-09T10:35:38" tests="0" file="M:\dev\tcx-js\test\test_parser.js" failures="0" time="0">
   </testsuite>
-  <testsuite name="#constructor()" timestamp="2021-04-09T10:22:50" tests="3" file="M:\dev\tcx-js\test\test_parser.js" failures="0" time="0.615">
+  <testsuite name="#constructor()" timestamp="2021-04-09T10:35:38" tests="4" file="M:\dev\tcx-js\test\test_parser.js" failures="0" time="0.94">
     <testcase name="Parser #constructor() defines a VERSION" time="0" classname="defines a VERSION">
     </testcase>
-    <testcase name="Parser #constructor() It should return the correct value for file activity_twin_cities_marathon.tcx" time="0.241" classname="It should return the correct value for file activity_twin_cities_marathon.tcx">
+    <testcase name="Parser #constructor() It should return the correct value for file activity_twin_cities_marathon.tcx" time="0.259" classname="It should return the correct value for file activity_twin_cities_marathon.tcx">
     </testcase>
-    <testcase name="Parser #constructor() It should return the correct value for file alex_bike_outside.tcx" time="0.374" classname="It should return the correct value for file alex_bike_outside.tcx">
+    <testcase name="Parser #constructor() It should return the correct value for file alex_bike_outside.tcx" time="0.379" classname="It should return the correct value for file alex_bike_outside.tcx">
+    </testcase>
+    <testcase name="Parser #constructor() It can parse given tcx string" time="0.302" classname="It can parse given tcx string">
     </testcase>
   </testsuite>
-  <testsuite name="Timestamp" timestamp="2021-04-09T10:22:50" tests="0" file="M:\dev\tcx-js\test\test_ts.js" failures="0" time="0">
+  <testsuite name="Timestamp" timestamp="2021-04-09T10:35:39" tests="0" file="M:\dev\tcx-js\test\test_ts.js" failures="0" time="0">
   </testsuite>
-  <testsuite name="#constructor()" timestamp="2021-04-09T10:22:50" tests="4" file="M:\dev\tcx-js\test\test_ts.js" failures="0" time="0.002">
+  <testsuite name="#constructor()" timestamp="2021-04-09T10:35:39" tests="4" file="M:\dev\tcx-js\test\test_ts.js" failures="0" time="0.001">
     <testcase name="Timestamp #constructor() It should return the correct value for 1970-01-01T00:00:00.000Z" time="0" classname="It should return the correct value for 1970-01-01T00:00:00.000Z">
     </testcase>
-    <testcase name="Timestamp #constructor() It should return the correct value for 1970-01-01T00:00:01.000Z" time="0.001" classname="It should return the correct value for 1970-01-01T00:00:01.000Z">
+    <testcase name="Timestamp #constructor() It should return the correct value for 1970-01-01T00:00:01.000Z" time="0" classname="It should return the correct value for 1970-01-01T00:00:01.000Z">
     </testcase>
     <testcase name="Timestamp #constructor() It should return the correct value for 1970-01-01T00:00:01.234Z" time="0" classname="It should return the correct value for 1970-01-01T00:00:01.234Z">
     </testcase>

@@ -1,18 +1,19 @@
-<testsuite name="Mocha Tests" tests="16" failures="0" errors="0" skipped="0" timestamp="Fri, 09 Apr 2021 10:22:50 GMT" time="0.634">
+<testsuite name="Mocha Tests" tests="17" failures="0" errors="0" skipped="0" timestamp="Fri, 09 Apr 2021 10:35:39 GMT" time="0.984">
 <testcase classname="ElapsedTime #constructor()" name="It should define constant values" time="0.001"/>
 <testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 0 ms" time="0"/>
 <testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 1000 ms" time="0"/>
-<testcase classname="ElapsedTime #constructor()" name="It should return the correct value for -1000 ms" time="0"/>
-<testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 62000 ms" time="0.001"/>
+<testcase classname="ElapsedTime #constructor()" name="It should return the correct value for -1000 ms" time="0.001"/>
+<testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 62000 ms" time="0"/>
 <testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 3663000 ms" time="0"/>
 <testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 3663200 ms" time="0"/>
 <testcase classname="ElapsedTime #constructor()" name="It should return the correct value for 3663700.1 ms" time="0"/>
 <testcase classname="GeoJsonLocation #constructor()" name="It should return the correct value for Davidson College" time="0"/>
 <testcase classname="Parser #constructor()" name="defines a VERSION" time="0"/>
-<testcase classname="Parser #constructor()" name="It should return the correct value for file activity_twin_cities_marathon.tcx" time="0.241"/>
-<testcase classname="Parser #constructor()" name="It should return the correct value for file alex_bike_outside.tcx" time="0.374"/>
+<testcase classname="Parser #constructor()" name="It should return the correct value for file activity_twin_cities_marathon.tcx" time="0.259"/>
+<testcase classname="Parser #constructor()" name="It should return the correct value for file alex_bike_outside.tcx" time="0.379"/>
+<testcase classname="Parser #constructor()" name="It can parse given tcx string" time="0.302"/>
 <testcase classname="Timestamp #constructor()" name="It should return the correct value for 1970-01-01T00:00:00.000Z" time="0"/>
-<testcase classname="Timestamp #constructor()" name="It should return the correct value for 1970-01-01T00:00:01.000Z" time="0.001"/>
+<testcase classname="Timestamp #constructor()" name="It should return the correct value for 1970-01-01T00:00:01.000Z" time="0"/>
 <testcase classname="Timestamp #constructor()" name="It should return the correct value for 1970-01-01T00:00:01.234Z" time="0"/>
 <testcase classname="Timestamp #constructor()" name="It should return the correct value for 2014-10-05T17:10:36.000Z" time="0.001"/>
 </testsuite>
