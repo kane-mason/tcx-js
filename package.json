@@ -9,7 +9,7 @@
     "dist/tcx*"
   ],
   "scripts": {
-    "test": "npx mocha --reporter mocha-multi-reporters --reporter-options configFile=mocha.opts",
+    "test": "rimraf mocha-*-results.xml && npx mocha --reporter mocha-multi-reporters --reporter-options configFile=mocha.opts",
     "clean": "rimraf dist/*.*",
     "merge": "node dist/merge.js src/tcx.ts",
     "compile": "tsc",
