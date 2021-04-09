@@ -9,7 +9,11 @@
     "dist/tcx*"
   ],
   "scripts": {
-    "test": "npx mocha --reporter mocha-multi-reporters --reporter-options configFile=mocha.opts"
+    "test": "npx mocha --reporter mocha-multi-reporters --reporter-options configFile=mocha.opts",
+    "clean": "rimraf dist/*.*",
+    "merge": "node dist/merge.js src/tcx.ts",
+    "compile": "tsc",
+    "build": "npm run clean && tsc --build tsconfig-merge.json && npm run merge && npm run compile"
   },
   "author": "Chris Joakim",
   "license": "MIT",
