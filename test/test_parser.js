@@ -1,6 +1,7 @@
 // Unit tests for class Parser
 // Chris Joakim, 2019/07/29
 
+const fs = require('fs');
 const assert = require('assert');
 const chai   = require('chai');
 const chaiAlmost = require('chai-almost');
@@ -295,6 +296,18 @@ describe('Parser', function() {
       expect(firstWatt).to.be.almost(17.0);
       expect(hightestWatts).to.be.almost(957.0);
       expect(lastWatts).to.be.almost(16.0);
+    });
+
+    it('It can parse given tcx string', function() {
+      var infile = 'data/alex_bike_outside_pretty.tcx';
+      var filestring = fs.readFileSync(infile, { encoding: 'utf-8' });
+      var parser = new Parser(infile, filestring);
+
+      activity = parser.activity;
+
+      expect(activity.sport).to.equal('Biking');
+      expect(activity.activityId).to.equal('2018-07-29T07:34:11Z');
+
     });
 
   });
