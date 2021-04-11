@@ -25,10 +25,6 @@ export class Main {
             console.log('outfile: ' + outfile);
 
             var parser :   Parser   = new Parser(infile);
-            var activity : Activity = parser.activity;
-            var creator :  Creator  = activity.creator;
-            var author :   Author   = activity.author;
-            var trackpoints : Trackpoint[] = activity.trackpoints;
 
             var jstr : string = JSON.stringify(parser.activity, (key, value) => {
                 if (value !== null) {
