@@ -17,10 +17,6 @@ class Main {
             console.log('infile:  ' + infile);
             console.log('outfile: ' + outfile);
             var parser = new parser_1.Parser(infile);
-            var activity = parser.activity;
-            var creator = activity.creator;
-            var author = activity.author;
-            var trackpoints = activity.trackpoints;
             var jstr = JSON.stringify(parser.activity, (key, value) => {
                 if (value !== null) {
                     return value;

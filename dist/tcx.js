@@ -282,35 +282,61 @@ class Parser {
         let root_obj = this.convertXmlToJson(tcx_xml_str);
         let tcdb = root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";
-        let activities = tcdb["Activities"];
-        let activity = activities["Activity"];
-        this.activity.activityId = activity["Id"];
-        try {
-            let activityDollar = activity["$"];
-            this.activity.sport = activityDollar["Sport"];
+        if (tcdb["Courses"] && !tcdb["Activities"]) {
+            let courses = tcdb["Courses"];
+            let activity = courses["Course"];
+            let tkpt_seq = 0;
+            let curr_track = activity["Track"];
+            let curr_tkpts = curr_track["Trackpoint"];
+            let curr_tkpt_length = curr_tkpts.length;
+            for (var t = 0; t < curr_tkpt_length; t++) {
+                tkpt_seq++;
+                let tkpt_data = curr_tkpts[t];
+                this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
+            }
         }
-        catch (e) {
-            console.log(e);
-        }
-        try {
-            let author_data = tcdb["Author"];
-            this.activity.author = new Author(author_data);
-        }
-        catch (e) {
-        }
-        try {
-            let creator_data = activity["Creator"];
-            this.activity.creator = new Creator(creator_data);
-        }
-        catch (e) {
-        }
-        let lapObj = activity["Lap"];
-        let tkpt_seq = 0;
-        if (Array.isArray(lapObj)) {
-            let laps = activity["Lap"];
-            let lap_count = laps.length;
-            for (var i = 0; i < lap_count; i++) {
-                let curr_lap = laps[i];
+        else {
+            let activities = tcdb["Activities"];
+            let activity = activities["Activity"];
+            this.activity.activityId = activity["Id"];
+            try {
+                let activityDollar = activity["$"];
+                this.activity.sport = activityDollar["Sport"];
+            }
+            catch (e) {
+                console.log(e);
+            }
+            try {
+                let author_data = tcdb["Author"];
+                this.activity.author = new Author(author_data);
+            }
+            catch (e) {
+            }
+            try {
+                let creator_data = activity["Creator"];
+                this.activity.creator = new Creator(creator_data);
+            }
+            catch (e) {
+            }
+            let lapObj = activity["Lap"];
+            let tkpt_seq = 0;
+            if (Array.isArray(lapObj)) {
+                let laps = activity["Lap"];
+                let lap_count = laps.length;
+                for (var i = 0; i < lap_count; i++) {
+                    let curr_lap = laps[i];
+                    let curr_track = curr_lap["Track"];
+                    let curr_tkpts = curr_track["Trackpoint"];
+                    let curr_tkpt_length = curr_tkpts.length;
+                    for (var t = 0; t < curr_tkpt_length; t++) {
+                        tkpt_seq++;
+                        let tkpt_data = curr_tkpts[t];
+                        this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
+                    }
+                }
+            }
+            else {
+                let curr_lap = lapObj;
                 let curr_track = curr_lap["Track"];
                 let curr_tkpts = curr_track["Trackpoint"];
                 let curr_tkpt_length = curr_tkpts.length;
@@ -319,17 +345,6 @@ class Parser {
                     let tkpt_data = curr_tkpts[t];
                     this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
                 }
-            }
-        }
-        else {
-            let curr_lap = lapObj;
-            let curr_track = curr_lap["Track"];
-            let curr_tkpts = curr_track["Trackpoint"];
-            let curr_tkpt_length = curr_tkpts.length;
-            for (var t = 0; t < curr_tkpt_length; t++) {
-                tkpt_seq++;
-                let tkpt_data = curr_tkpts[t];
-                this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
             }
         }
         let startingEpoch = this.activity.startingEpoch;

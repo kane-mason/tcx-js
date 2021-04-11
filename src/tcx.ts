@@ -371,46 +371,70 @@ export class Parser {
         let tcdb : JsonObject = <JsonObject> root_obj["TrainingCenterDatabase"];
         let tcdb_file = this.tcx_filename + ".json";
 
-        // console.log(JSON.stringify(root_obj));
-        // var epoch = new Date().getTime();
-        // fs.writeFileSync('tmp/' + epoch + '.json', JSON.stringify(root_obj, null, 2))
+        if (tcdb["Courses"] && !tcdb["Activities"]) {
+            let courses : JsonObject = <JsonObject> tcdb["Courses"];
+            let activity : JsonObject   = <JsonObject> courses["Course"];
 
-        let activities : JsonObject = <JsonObject> tcdb["Activities"];
-        let activity : JsonObject   = <JsonObject> activities["Activity"];
-        this.activity.activityId = <string> activity["Id"];
+            let tkpt_seq = 0;
 
-        try {
-            let activityDollar : JsonObject = <JsonObject> activity["$"];
-            this.activity.sport = <string> activityDollar["Sport"];
+            let curr_track : JsonObject = <JsonObject> activity["Track"];
+            let curr_tkpts : JsonArray  = <JsonArray> curr_track["Trackpoint"];
+            let curr_tkpt_length = curr_tkpts.length;
+            for (var t = 0; t < curr_tkpt_length; t++) {
+                tkpt_seq++;
+                let tkpt_data : JsonObject = <JsonObject> curr_tkpts[t];
+                this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
+            }
         }
-        catch(e) {
-            console.log(e);
-        }
+        else {
+            let activities : JsonObject = <JsonObject> tcdb["Activities"];
+            let activity : JsonObject   = <JsonObject> activities["Activity"];
+            this.activity.activityId = <string> activity["Id"];
 
-        try {
-            let author_data : JsonObject = <JsonObject> tcdb["Author"];
-            this.activity.author = new Author(author_data);
-        }
-        catch(e) {
-            //console.log(e);
-        }
+            try {
+                let activityDollar : JsonObject = <JsonObject> activity["$"];
+                this.activity.sport = <string> activityDollar["Sport"];
+            }
+            catch(e) {
+                console.log(e);
+            }
 
-        try {
-            let creator_data : JsonObject = <JsonObject> activity["Creator"];
-            this.activity.creator = new Creator(creator_data);
-        }
-        catch(e) {
-            //console.log(e);
-        }
+            try {
+                let author_data : JsonObject = <JsonObject> tcdb["Author"];
+                this.activity.author = new Author(author_data);
+            }
+            catch(e) {
+                //console.log(e);
+            }
 
-        let lapObj : JsonValue  = <JsonValue> activity["Lap"];  // could be an Array, or not
-        let tkpt_seq = 0;
+            try {
+                let creator_data : JsonObject = <JsonObject> activity["Creator"];
+                this.activity.creator = new Creator(creator_data);
+            }
+            catch(e) {
+                //console.log(e);
+            }
 
-        if (Array.isArray(lapObj)) {
-            let laps : JsonArray  = <JsonArray> activity["Lap"];
-            let lap_count : number  = laps.length;
-            for (var i = 0; i < lap_count; i++) {
-                let curr_lap   : JsonObject = <JsonObject> laps[i];
+            let lapObj : JsonValue  = <JsonValue> activity["Lap"];  // could be an Array, or not
+            let tkpt_seq = 0;
+
+            if (Array.isArray(lapObj)) {
+                let laps : JsonArray  = <JsonArray> activity["Lap"];
+                let lap_count : number  = laps.length;
+                for (var i = 0; i < lap_count; i++) {
+                    let curr_lap   : JsonObject = <JsonObject> laps[i];
+                    let curr_track : JsonObject = <JsonObject> curr_lap["Track"];
+                    let curr_tkpts : JsonArray  = <JsonArray> curr_track["Trackpoint"];
+                    let curr_tkpt_length = curr_tkpts.length;
+                    for (var t = 0; t < curr_tkpt_length; t++) {
+                        tkpt_seq++;
+                        let tkpt_data : JsonObject = <JsonObject> curr_tkpts[t];
+                        this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
+                    }
+                }
+            }
+            else {
+                let curr_lap   : JsonObject = <JsonObject> lapObj;
                 let curr_track : JsonObject = <JsonObject> curr_lap["Track"];
                 let curr_tkpts : JsonArray  = <JsonArray> curr_track["Trackpoint"];
                 let curr_tkpt_length = curr_tkpts.length;
@@ -419,17 +443,6 @@ export class Parser {
                     let tkpt_data : JsonObject = <JsonObject> curr_tkpts[t];
                     this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
                 }
-            }
-        }
-        else {
-            let curr_lap   : JsonObject = <JsonObject> lapObj;
-            let curr_track : JsonObject = <JsonObject> curr_lap["Track"];
-            let curr_tkpts : JsonArray  = <JsonArray> curr_track["Trackpoint"];
-            let curr_tkpt_length = curr_tkpts.length;
-            for (var t = 0; t < curr_tkpt_length; t++) {
-                tkpt_seq++;
-                let tkpt_data : JsonObject = <JsonObject> curr_tkpts[t];
-                this.activity.addTrackpoint(new Trackpoint(tkpt_data, tkpt_seq));
             }
         }
 
