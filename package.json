@@ -17,7 +17,8 @@
     "parse": "npm run parse1 && npm run parse2 && npm run parse3",
     "parse1": "node dist/main.js data/activity_twin_cities_marathon.tcx data/activity_twin_cities_marathon.json",
     "parse2": "node dist/main.js data/alex_bike_outside_pretty.tcx data/alex_bike_outside.json",
-    "parse3": "node dist/main.js data/cj-cycling-20190721.tcx data/cj-cycling-20190721.json"
+    "parse3": "node dist/main.js data/cj-cycling-20190721.tcx data/cj-cycling-20190721.json",
+    "parse4": "node dist/main.js data/strava_route.tcx data/strava_route.json"
   },
   "author": "Chris Joakim",
   "license": "MIT",
