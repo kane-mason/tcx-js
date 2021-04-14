@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Main = void 0;
 const fs = require("fs");
 const parser_1 = require("./parser");
 class Main {

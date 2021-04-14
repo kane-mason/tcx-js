@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Creator = void 0;
 class Creator {
     constructor(raw_obj) {
         this.type = 'Creator';

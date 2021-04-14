@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Activity = void 0;
 const author_1 = require("./author");
 const creator_1 = require("./creator");
 const trackpoint_1 = require("./trackpoint");

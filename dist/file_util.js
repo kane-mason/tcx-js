@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FileUtil = void 0;
 const fs = require("fs");
 class FileUtil {
     exists(infile) {

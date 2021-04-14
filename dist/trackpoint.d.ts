@@ -1,10 +1,10 @@
 import { JsonObject } from "./parser";
 import { GeoJsonLocation } from "./geo";
 export declare class Trackpoint {
-    static readonly DEFAULT_EPOCH_TIMESTAMP_STRING: string;
-    static readonly MILES_PER_KILOMETER: number;
-    static readonly YARDS_PER_MILE: number;
-    static readonly FEET_PER_METER: number;
+    static get DEFAULT_EPOCH_TIMESTAMP_STRING(): string;
+    static get MILES_PER_KILOMETER(): number;
+    static get YARDS_PER_MILE(): number;
+    static get FEET_PER_METER(): number;
     doctype: string;
     time: string | null;
     seq: number | null;

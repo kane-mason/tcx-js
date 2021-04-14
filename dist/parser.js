@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Parser = exports.json = void 0;
 const fs = require("fs");
 const xml2js = require("xml2js");
 const activity_1 = require("./activity");

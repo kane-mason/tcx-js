@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Trackpoint = void 0;
 const geo_1 = require("./geo");
 const etime_1 = require("./etime");
 const ts_1 = require("./ts");

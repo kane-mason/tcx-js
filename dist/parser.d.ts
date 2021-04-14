@@ -10,7 +10,7 @@ export interface JsonObject {
 }
 export declare const json: JsonObject;
 export declare class Parser {
-    static readonly VERSION: string;
+    static get VERSION(): string;
     activity: Activity;
     tcx_filename: string;
     constructor(infile: string, intcxstring?: string);

@@ -7,9 +7,9 @@ export declare class Timestamp {
     toString(): string;
 }
 export declare class ElapsedTime {
-    static readonly MILLISECONDS_PER_SECOND: number;
-    static readonly SECONDS_PER_HOUR: number;
-    static readonly SECONDS_PER_MINUTE: number;
+    static get MILLISECONDS_PER_SECOND(): number;
+    static get SECONDS_PER_HOUR(): number;
+    static get SECONDS_PER_MINUTE(): number;
     elapsedMs: number;
     secs: number;
     hh: number;
@@ -25,10 +25,10 @@ export declare class GeoJsonLocation {
     constructor(latitude: number, longitude: number);
 }
 export declare class Trackpoint {
-    static readonly DEFAULT_EPOCH_TIMESTAMP_STRING: string;
-    static readonly MILES_PER_KILOMETER: number;
-    static readonly YARDS_PER_MILE: number;
-    static readonly FEET_PER_METER: number;
+    static get DEFAULT_EPOCH_TIMESTAMP_STRING(): string;
+    static get MILES_PER_KILOMETER(): number;
+    static get YARDS_PER_MILE(): number;
+    static get FEET_PER_METER(): number;
     doctype: string;
     time: string | null;
     seq: number | null;
@@ -101,7 +101,7 @@ export interface JsonObject {
 }
 export declare const json: JsonObject;
 export declare class Parser {
-    static readonly VERSION: string;
+    static get VERSION(): string;
     activity: Activity;
     tcx_filename: string;
     constructor(infile: string, intcxstring?: string);

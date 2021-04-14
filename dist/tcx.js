@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Parser = exports.json = exports.Activity = exports.Creator = exports.Author = exports.Trackpoint = exports.GeoJsonLocation = exports.ElapsedTime = exports.Timestamp = void 0;
 const fs = require("fs");
 const xml2js = require("xml2js");
 class Timestamp {
