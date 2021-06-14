@@ -15,5 +15,6 @@ export declare class Parser {
     tcx_filename: string;
     constructor(infile: string, intcxstring?: string);
     convertXmlToJson(data: string): Object;
+    sanitize(data: string): string;
     finish(): void;
 }

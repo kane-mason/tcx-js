@@ -361,7 +361,7 @@ class Parser {
     static get VERSION() { return "1.0.1"; }
     convertXmlToJson(data) {
         let res = {};
-        xml2js.parseString(data, { explicitArray: false }, (error, result) => {
+        xml2js.parseString(this.sanitize(data), { explicitArray: false }, (error, result) => {
             if (error) {
                 throw new Error(error);
             }
@@ -370,6 +370,11 @@ class Parser {
             }
         });
         return res;
+    }
+    sanitize(data) {
+        data = data.replace(/(\r\n|\n|\r)/gm, '');
+        data = data.replace(/[\u200B-\u200D\uFEFF]/g, '');
+        return decodeURIComponent(data);
     }
     finish() {
     }

@@ -461,7 +461,7 @@ export class Parser {
 
     public convertXmlToJson(data: string): Object {
         let res : Object = {};
-        xml2js.parseString(data, { explicitArray: false }, (error:any, result:any) => {
+        xml2js.parseString(this.sanitize(data), { explicitArray: false }, (error:any, result:any) => {
             if (error) {
                 throw new Error(error);
             }
@@ -470,6 +470,12 @@ export class Parser {
             }
         });
         return res;
+    }
+
+    public sanitize(data: string): string {
+        data = data.replace(/(\r\n|\n|\r)/gm,''); // all line breaks and carriage returns
+        data = data.replace(/[\u200B-\u200D\uFEFF]/g, ''); // zero width characters
+        return decodeURIComponent(data);
     }
 
     public finish() : void {
